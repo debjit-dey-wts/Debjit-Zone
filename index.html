@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debjit CodeZone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: "Raleway", sans-serif;
+            background-image: url("https://images.pexels.com/photos/32954141/pexels-photo-32954141.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+        }
+
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .form-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .auth-container {
+                width: 90%;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .auth-container {
+                width: 75%;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .auth-container {
+                width: 50%;
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #signup-container, #login-container{
+            backdrop-filter: blur(10px);
+            background-color: #ffffffc6;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+    <!-- Signup Container -->
+    <div id="signup-container" class="auth-container rounded-xl p-8 card animate-fadeIn">
+        <div class="text-center mb-8">
+            <img src="./assets/debjit-c-zone.png" alt="AuthFlow Pro logo with a shield icon in purple and green gradient" width="150" height="150" class="mx-auto mb-4 rounded-full">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Create Account</h1>
+            <p class="text-gray-600">Join our community today</p>
+        </div>
+        
+        <form id="signup-form" class="space-y-5">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                <input type="text" id="name" name="name" required 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md form-input focus:ring-1 focus:ring-purple-500">
+            </div>
+            
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                <input type="email" id="email" name="email" required 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md form-input focus:ring-1 focus:ring-purple-500">
+            </div>
+            
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <input type="password" id="password" name="password" required minlength="8"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md form-input focus:ring-1 focus:ring-purple-500">
+                <p class="text-xs text-gray-500 mt-1">Must be at least 8 characters</p>
+            </div>
+            
+            <div>
+                <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md form-input focus:ring-1 focus:ring-purple-500">
+            </div>
+            
+            <div class="flex items-center">
+                <input type="checkbox" id="terms" name="terms" required
+                    class="rounded text-purple-600 focus:ring-purple-500">
+                <label for="terms" class="ml-2 text-sm text-gray-600">
+                    I agree to the <a href="#" class="text-purple-600 hover:text-purple-800">Terms of Service</a> and <a href="#" class="text-purple-600 hover:text-purple-800">Privacy Policy</a>
+                </label>
+            </div>
+            
+            <button type="submit" class="w-full py-2 px-4 text-white rounded-md btn-primary">
+                Sign Up
+            </button>
+        </form>
+        
+        <div class="mt-6 text-center">
+            <p class="text-gray-600">Already have an account? <a href="#" id="switch-to-login" class="text-purple-600 hover:text-purple-800 font-medium">Log In</a></p>
+        </div>
+    </div>
+
+    <!-- Login Container (hidden by default) -->
+    <div id="login-container" class="auth-container rounded-xl p-8 card hidden">
+        <div class="text-center mb-8">
+            <img src="./assets/debjit-c-zone.png" width="120" height="120" alt="AuthFlow Pro logo with a shield icon in purple and green gradient" class="mx-auto mb-4 rounded-full">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h1>
+            <p class="text-gray-600">Glad to see you again</p>
+        </div>
+        
+        <form id="login-form" class="space-y-5">
+            <div>
+                <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                <input type="email" id="login-email" name="login-email" required 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md form-input focus:ring-1 focus:ring-purple-500">
+            </div>
+            
+            <div>
+                <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <input type="password" id="login-password" name="login-password" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md form-input focus:ring-1 focus:ring-purple-500">
+                <p class="text-right">
+                    <a href="#" class="text-sm text-purple-600 hover:text-purple-800">Forgot password?</a>
+                </p>
+            </div>
+            
+            <button type="submit" class="w-full py-2 px-4 text-white rounded-md btn-primary">
+                Log In
+            </button>
+        </form>
+        
+        <div class="mt-6 text-center">
+            <p class="text-gray-600">Don't have an account? <a href="#" id="switch-to-signup" class="text-purple-600 hover:text-purple-800 font-medium">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Dashboard Container (hidden by default) -->
+    <div id="dashboard-container" class="w-full max-w-6xl hidden">
+        <nav class="bg-white shadow-sm p-4 rounded-xl mb-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="./assets/debjit-c-zone.png" height="40" width="40" alt="AuthFlow Pro dashboard logo in mini purple icon" class="mr-3 rounded-full">
+                    <span class="text-xl font-bold text-gray-800">Debjit Codezone</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-purple-600 nav-link">Dashboard</a>
+                    <a href="#" class="text-gray-600 hover:text-purple-600 nav-link">Features</a>
+                    <a href="#" class="text-gray-600 hover:text-purple-600 nav-link">Support</a>
+                </div>
+                
+                <div>
+                    <button id="account-button" class="flex items-center space-x-2 bg-purple-50 hover:bg-purple-100 text-purple-600 px-4 py-2 rounded-full transition-all duration-200">
+                        <span>My Account</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="bg-white rounded-xl p-8 card">
+            <div class="text-center mb-8">
+                <h1 id="welcome-message" class="text-3xl font-bold text-gray-800 mb-2">Welcome back, User!</h1>
+                <p class="text-gray-600">Here's what's happening with your account today</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-purple-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Profile Completion</h3>
+                            <p class="text-purple-600">Complete your profile</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-purple-200 rounded-full h-2.5">
+                        <div class="bg-purple-600 h-2.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Security Status</h3>
+                            <p class="text-green-600">Everything looks good</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-green-200 rounded-full h-2.5">
+                        <div class="bg-green-600 h-2.5 rounded-full" style="width: 100%"></div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Monthly Stats</h3>
+                            <p class="text-blue-600">Your account activity</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-blue-200 rounded-full h-2.5">
+                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t pt-6 mt-8">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Quick Actions</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button class="flex flex-col items-center justify-center p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                        <div class="bg-purple-100 p-3 rounded-full mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <span class="text-sm text-center text-gray-700">Profile</span>
+                    </button>
+                    
+                    <button class="flex flex-col items-center justify-center p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                        <div class="bg-blue-100 p-3 rounded-full mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <span class="text-sm text-center text-gray-700">Security</span>
+                    </button>
+                    
+                    <button class="flex flex-col items-center justify-center p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                        <div class="bg-green-100 p-3 rounded-full mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                            </svg>
+                        </div>
+                        <span class="text-sm text-center text-gray-700">Billing</span>
+                    </button>
+                    
+                    <button class="flex flex-col items-center justify-center p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                        <div class="bg-indigo-100 p-3 rounded-full mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <span class="text-sm text-center text-gray-700">Activity</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Modal (hidden by default) -->
+    <div id="account-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full animate-fadeIn">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-semibold text-gray-800">Account Settings</h3>
+                <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="flex items-center space-x-4">
+                    <img src="https://placehold.co/80x80" alt="User profile picture with purple background" class="rounded-full w-16 h-16">
+                    <div>
+                        <h4 id="account-name" class="font-medium text-gray-800">John Doe</h4>
+                        <p id="account-email" class="text-sm text-gray-600">john@example.com</p>
+                    </div>
+                </div>
+                
+                <div class="pt-4 border-t">
+                    <a href="#" class="block py-2 px-3 hover:bg-gray-50 rounded-lg text-gray-700">Profile Settings</a>
+                    <a href="#" class="block py-2 px-3 hover:bg-gray-50 rounded-lg text-gray-700">Security</a>
+                    <a href="#" class="block py-2 px-3 hover:bg-gray-50 rounded-lg text-gray-700">Billing</a>
+                    <button id="logout-btn" class="block w-full text-left py-2 px-3 hover:bg-gray-50 rounded-lg text-red-600 mt-2">
+                        Log Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const signupForm = document.getElementById('signup-form');
+        const loginForm = document.getElementById('login-form');
+        const switchToLogin = document.getElementById('switch-to-login');
+        const switchToSignup = document.getElementById('switch-to-signup');
+        const signupContainer = document.getElementById('signup-container');
+        const loginContainer = document.getElementById('login-container');
+        const dashboardContainer = document.getElementById('dashboard-container');
+        const accountButton = document.getElementById('account-button');
+        const accountModal = document.getElementById('account-modal');
+        const closeModal = document.getElementById('close-modal');
+        const logoutBtn = document.getElementById('logout-btn');
+        const welcomeMessage = document.getElementById('welcome-message');
+        const accountName = document.getElementById('account-name');
+        const accountEmail = document.getElementById('account-email');
+
+        // User data storage
+        const users = JSON.parse(localStorage.getItem('authflow_users')) || [];
+
+        // Switch between signup and login forms
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupContainer.classList.add('hidden');
+            loginContainer.classList.remove('hidden');
+            loginContainer.classList.add('animate-fadeIn');
+        });
+
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginContainer.classList.add('hidden');
+            signupContainer.classList.remove('hidden');
+            signupContainer.classList.add('animate-fadeIn');
+        });
+
+        // Signup form handler
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = signupForm.name.value;
+            const email = signupForm.email.value;
+            const password = signupForm.password.value;
+            const confirmPassword = signupForm['confirm-password'].value;
+            
+            // Validation
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            // Check if user already exists
+            if (users.some(user => user.email === email)) {
+                alert('User with this email already exists');
+                return;
+            }
+            
+            // Create new user
+            const newUser = {
+                id: Date.now().toString(),
+                name,
+                email,
+                password,
+                createdAt: new Date().toISOString()
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('authflow_users', JSON.stringify(users));
+            localStorage.setItem('authflow_current_user', JSON.stringify(newUser));
+            
+            // Clear form and show success message
+            signupForm.reset();
+            
+            // Switch to login form with pre-filled email
+            signupContainer.classList.add('hidden');
+            loginContainer.classList.remove('hidden');
+            document.getElementById('login-email').value = email;
+            
+            alert('Account created successfully! Please log in.');
+        });
+
+        // Login form handler
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = loginForm['login-email'].value;
+            const password = loginForm['login-password'].value;
+            
+            // Find user
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (!user) {
+                alert('Invalid email or password');
+                return;
+            }
+            
+            // Store current user session
+            localStorage.setItem('authflow_current_user', JSON.stringify(user));
+            
+            // Show dashboard
+            loginContainer.classList.add('hidden');
+            dashboardContainer.classList.remove('hidden');
+            
+            // Update welcome message
+            welcomeMessage.textContent = `Welcome back, ${user.name}!`;
+            accountName.textContent = user.name;
+            accountEmail.textContent = user.email;
+        });
+
+        // Account button handler
+        accountButton.addEventListener('click', () => {
+            accountModal.classList.remove('hidden');
+        });
+
+        // Close modal handler
+        closeModal.addEventListener('click', () => {
+            accountModal.classList.add('hidden');
+        });
+
+        // Logout handler
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('authflow_current_user');
+            accountModal.classList.add('hidden');
+            dashboardContainer.classList.add('hidden');
+            loginContainer.classList.remove('hidden');
+            loginForm.reset();
+        });
+
+        // Check for existing session on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentUser = JSON.parse(localStorage.getItem('authflow_current_user'));
+            
+            if (currentUser) {
+                loginContainer.classList.add('hidden');
+                signupContainer.classList.add('hidden');
+                dashboardContainer.classList.remove('hidden');
+                
+                // Update welcome message
+                welcomeMessage.textContent = `Welcome back, ${currentUser.name}!`;
+                accountName.textContent = currentUser.name;
+                accountEmail.textContent = currentUser.email;
+            }
+        });
+    </script>
+</body>
+</html>
